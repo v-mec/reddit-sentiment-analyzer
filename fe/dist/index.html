@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Reddit Sentiment Analyzer</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div class="container pt-3">
+      <div class="vstack gap-3">
+        <h3>Reddit Sentiment Analyzer</h3>
+        <form id="form">
+          <input
+            class="form-control"
+            placeholder="Enter submission url"
+            id="input"
+          />
+          <div class="form-check form-switch pt-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="parallel"
+              checked
+            />
+            <label class="form-check-label" for="parallel"
+              >Use parallel computation</label
+            >
+          </div>
+          <div class="form-check form-switch pt-3">
+            <input
+              class="form-check-input"
+              type="checkbox"
+              role="switch"
+              id="inBrowser"
+            />
+            <label class="form-check-label" for="inBrowser"
+              >Run in browser</label
+            >
+          </div>
+        </form>
+        <div class="d-flex justify-content-center d-none" id="loading">
+          <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+        <div class="card d-none" id="card">
+          <div class="card-body">
+            <h5 class="card-title">Results</h5>
+            <h2 id="result"></h2>
+            <hr />
+            <div class="row">
+              <div class="col">
+                <p>Average compound score</p>
+                <p>Comments analyzed</p>
+                <p>Execution time</p>
+              </div>
+              <div class="col">
+                <p id="avg"></p>
+                <p id="count"></p>
+                <p id="time"></p>
+              </div>
+            </div>
+            <hr />
+            <p class="text-muted">
+              The compound score is computed by summing the valence scores of
+              each word in the lexicon, adjusted according to the rules, and
+              then normalized to be between -1 (most extreme negative) and +1
+              (most extreme positive).
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="main.js"></script>
+  </body>
+</html>
